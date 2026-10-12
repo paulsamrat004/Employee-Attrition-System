@@ -1,0 +1,6 @@
+@echo off
+echo [1/2] Training model...
+python src\train_model.py
+if errorlevel 1 exit /b 1
+echo [2/2] Starting web application...
+python app.py

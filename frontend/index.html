@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Attrition Intelligence</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">HR ANALYTICS • MACHINE LEARNING</p>
+      <h1>Employee Attrition Intelligence</h1>
+      <p class="subtitle">Evaluate an employee by unique Employee ID and predict attrition probability.</p>
+    </div>
+    <div class="status"><span></span> Model API ready</div>
+  </header>
+
+  <main class="container">
+    <section class="hero-grid">
+      <div class="card intro">
+        <h2>Employee evaluation</h2>
+        <p>Enter an Employee ID. If the ID exists in the project dataset, the employee profile is loaded automatically and evaluated by the trained model.</p>
+        <div class="mini-stats">
+          <div><b>2</b><span>Models compared</span></div>
+          <div><b>5</b><span>Evaluation metrics</span></div>
+          <div><b>7</b><span>EDA visualizations</span></div>
+        </div>
+      </div>
+      <div class="card result-card" id="resultCard">
+        <p class="eyebrow">PREDICTION</p>
+        <div id="employeeResultId" class="employee-id-badge">Employee ID: —</div>
+        <div id="resultLabel" class="result-label">—</div>
+        <div class="prob-wrap"><div id="probBar" class="prob-bar"></div></div>
+        <div id="probText" class="prob-text">Enter an Employee ID and evaluate the attrition probability.</div>
+        <div id="comparisonText" class="comparison-text"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <div><h2>Employee profile</h2><p>Use Employee ID to load an existing employee. For a new ID, enter the profile fields manually.</p></div>
+        <button class="ghost" id="demoBtn" type="button">Load demo ID</button>
+      </div>
+
+      <form id="predictionForm">
+        <div class="id-row">
+          <label class="id-field">Employee ID
+            <input type="text" name="EmployeeID" id="employeeId" placeholder="e.g. E100000" maxlength="50" required>
+          </label>
+          <button class="lookup" id="lookupBtn" type="button">Load Employee</button>
+        </div>
+        <p id="lookupStatus" class="lookup-status"></p>
+
+        <div class="form-grid">
+          <label>Age <input type="number" name="Age" min="16" max="100" step="1" required></label>
+          <label>Department
+            <select name="Department" required>
+              <option value="">Select department</option>
+              <option>Sales</option><option>Engineering</option><option>HR</option>
+              <option>Marketing</option><option>Finance</option>
+            </select>
+          </label>
+          <label>Monthly Income (₹) <input type="number" name="MonthlyIncome" min="0" step="1" required></label>
+          <label>Years at Company <input type="number" name="YearsAtCompany" min="0" max="50" step="0.1" required></label>
+          <label>Job Satisfaction
+            <select name="JobSatisfaction" required><option value="">1–5</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          </label>
+          <label>Work-Life Balance
+            <select name="WorkLifeBalance" required><option value="">1–5</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          </label>
+          <label>Performance Rating
+            <select name="PerformanceRating" required><option value="">1–5</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          </label>
+          <label>OverTime
+            <select name="OverTime" required><option value="">Select</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>Distance From Home (km) <input type="number" name="DistanceFromHome" min="0" step="0.1" required></label>
+        </div>
+        <div class="actions">
+          <button class="primary" type="submit" id="predictBtn">Evaluate Attrition</button>
+          <button class="ghost" type="reset">Clear</button>
+        </div>
+        <p id="error" class="error"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <div><h2>Model performance</h2><p>Test-set metrics from the latest training run.</p></div>
+      </div>
+      <div id="metrics" class="metrics-grid"><div class="loading">Loading metrics…</div></div>
+    </section>
+  </main>
+
+  <footer>Employee Attrition Prediction System • Built with Python, Scikit-learn, Flask, HTML, CSS & JavaScript</footer>
+  <script src="/script.js"></script>
+</body>
+</html>
